@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import{BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import{BrowserRouter as Router, Route} from "react-router-dom";
 import Home from './components/home';
 import About from './components/about';
 import Displays from './components/displays';
@@ -9,15 +9,13 @@ class App extends Component {
   state = {  }
   render() { 
       return ( 
-      <React.Fragment> 
-        <NavigationBar/>
-        <Jumbo/>
         <Router>
-            <Route exact path = '/' component={Home}/>
-            <Route path = '/About' component={About}/>
-            <Route path = '/Displays' component={Displays}/>
+          <NavigationBar/>
+          <Jumbo/>
+          <Route exact path = '/' component={Home}/>
+          <Route path = '/about' component={About}/>
+          <Route path = '/displays' component={Displays}/>
         </Router>
-      </React.Fragment>
     );
   }
 }
