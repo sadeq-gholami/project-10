@@ -13,11 +13,9 @@ class App extends Component {
         <NavigationBar/>
         <Jumbo/>
         <Router>
-          <Switch>
             <Route exact path = '/' component={Home}/>
             <Route path = '/About' component={About}/>
             <Route path = '/Displays' component={Displays}/>
-          </Switch>
         </Router>
       </React.Fragment>
     );
