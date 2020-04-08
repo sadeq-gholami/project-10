@@ -16,10 +16,18 @@ class Home extends Component {
     }
 
     handleSubmit=(e)=>{
-        console.log(this.state.message);
-        this.setState({
-            message:""
-        })
+        
+        let data = {id: "5e8c8382c5c0f600242851f4", message: this.state.message}
+        fetch('https://iot-display.herokuapp.com/message/set', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+              },
+            body: JSON.stringify(data)
+        }).then(response => {
+           return response.json();
+        }).then(data => data).catch(error => console.error('error', error));
+        
     }
     render() { 
         return ( 

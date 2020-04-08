@@ -12,9 +12,9 @@ class App extends Component {
         <Router>
           <NavigationBar/>
           <Jumbo/>
-          <Route exact path = '/' component={Home}/>
+          <Route exact path = '/' component={Displays}/>
           <Route path = '/about' component={About}/>
-          <Route path = '/displays' component={Displays}/>
+          <Route path = '/message' component={Home}/>
         </Router>
     );
   }

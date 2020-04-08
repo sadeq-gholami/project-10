@@ -1,18 +1,38 @@
 import React, { Component } from 'react';
-import {Container} from 'react-bootstrap';
+import {Form, Container, Button} from 'react-bootstrap';
+import {Link} from 'react-router-dom';
+
 class Displays extends Component {
-    state = {  }
+    state = {
+        selectedDisplay: ""
+      }
+
+    handlechange =(e)=>{
+        this.setState({selectedDisplay: e.target.value});
+    }
+
+    
     render() { 
         return (
-            <Container>
-                <h2>your Screens</h2>
-                <ul>
-                    <li>Screen 1</li>
-                    <li>Screen 2</li>
-                    <li>Screen 3</li>
-                    <li>Screen 4</li>  
-                </ul>
-            </Container>
+            <div>
+                <Container>
+                    <Form>
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Label>Select your display</Form.Label>
+                            <Form.Control as="select" onChange= {this.handlechange}>
+                            <option>Display 1</option>
+                            <option>Display 2</option>
+                            <option>Display 3</option>
+                            <option>Display 4</option>
+                            <option>Display 5</option>
+                            </Form.Control>
+                        </Form.Group>
+                    </Form>
+                    <Link to ="/message">
+                        <Button variant="primary">select</Button>
+                    </Link>
+                </Container>
+            </div>
          );
     }
 }
