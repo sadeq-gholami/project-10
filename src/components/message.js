@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import {Form} from 'react-bootstrap';
 import ModalPop from '../presentation/modalPop';
-class Home extends Component {
+class Message extends Component {
     state = { 
         message: ""
      }
@@ -16,8 +16,13 @@ class Home extends Component {
     }
 
     handleSubmit=(e)=>{
+       console.log(sessionStorage.getItem('session'));
         
-        let data = {id: "5e8c8382c5c0f600242851f4", message: this.state.message}
+        let data = {
+            display: this.props.match.params.selectedDisplay, 
+            message: this.state.message,
+            session: sessionStorage.getItem('session')
+        }
         fetch('https://iot-display.herokuapp.com/message/set', {
             method: 'POST',
             headers: {
@@ -26,7 +31,10 @@ class Home extends Component {
             body: JSON.stringify(data)
         }).then(response => {
            return response.json();
-        }).then(data => data).catch(error => console.error('error', error));
+        }).then(data => {
+            //console.log(data)
+           window.location.reload();
+        }).catch(error => console.error('error', error));
         
     }
     render() { 
@@ -45,4 +53,4 @@ class Home extends Component {
     }
 }
  
-export default Home;
+export default Message;
